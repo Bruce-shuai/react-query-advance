@@ -29,5 +29,17 @@
       "id": 3,
       "name": "Rachel Green"
     }
+  ],
+  "users": [
+    {
+      "id": "284970670@qq.com",
+      "username": "帅得乱七八糟"
+    }
+  ],
+  "usernames": [
+    {
+      "id": "帅得乱七八糟",
+      "hobbies": ["喜欢美女", "听轻音乐", "写代码"]
+    }
   ]
 }
