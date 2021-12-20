@@ -3,6 +3,7 @@ import HomePage from './components/Home.page';
 import RQSuperHeros from './components/RQSuperHeros.page';
 import SuperHeros from './components/SuperHeros.page';
 import { QueryClientProvider, QueryClient } from 'react-query';
+import { ReactQueryDevtools, ReactQueryDevTools } from 'react-query/devtools';
 import {
   BrowserRouter as Router,
   Routes,
@@ -39,6 +40,8 @@ function App() {
           </Routes>
         </>
       </Router>
+      {/* initialIsOpen=false是为了不让devtools默认打开, bottom-right 是为了让图标放置在底部右侧 */}
+      <ReactQueryDevtools initialIsOpen={false} position='bottom-right'/>
     </QueryClientProvider>
   );
 }
