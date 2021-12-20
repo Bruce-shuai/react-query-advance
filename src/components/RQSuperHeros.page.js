@@ -11,12 +11,13 @@ export default function RQSuperHerosPage() {
   const result = useQuery('super-heroes', () => {
     return axios.get('http://localhost:3004/superheroes')
   }, {
-    cacheTime: 5000,    // 设置缓存时间为5s, 当你转到其他路由页面5s后，缓存失效(useQuery 默认cacheTime:5 mins)
+    // 使用缓存的另一个好处是减少网络请求。这需要配置(作为开发者，我们知道某个api数据一般更新频率，所以我们可以控制发送网络请求更新数据的频率)
+    staleTime: 30000,    // 设置数据有效时间为30s(30s之内，重复进入这个路由页面，不会去发送网络请求)  默认的staleTime 为0s
   });
+  
   const { isLoading, isError, data, error, isFetching } = result;
 
-  // 即使对应接口的后台数据更新，isLoading也是false，在更新的数据返回之时，会无形之间把ui的数据显示发生改变。而不会有loading这种界面出现
-  console.log({isLoading, isFetching});
+  console.log({isLoading, isFetching});  // 在10s内，来回切换对应路由，isFetching 也是false
   if (isLoading) {
     return <h2>Loading...</h2>
   }
