@@ -12,11 +12,14 @@ export default function RQSuperHerosPage() {
     return axios.get('http://localhost:3004/superheroes')
   });
   console.log('result', result);
-  const { isLoading, data } = result;
+  const { isLoading, isError, data, error } = result;
 
   // 可以见到，有了useQuery就不再需要使用useEffect + useState来获取api接口数据了
   if (isLoading) {
     return <h2>Loading...</h2>
+  }
+  if (isError) {
+    return <h2>{error.message}</h2>
   }
   return (
     <>
