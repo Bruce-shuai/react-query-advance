@@ -9,9 +9,5 @@ export const useSuperHeroesData = (onSuccess, onError) => {
   }, {
     onSuccess: onSuccess,
     onError: onError,
-    select: (data) => {  // 对返回的数据进行格式化
-      const superHeroNames = data.data.map(hero => hero.name)
-      return superHeroNames
-    }
   });
 }

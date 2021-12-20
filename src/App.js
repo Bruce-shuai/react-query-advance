@@ -1,9 +1,10 @@
 import './App.css';
 import HomePage from './components/Home.page';
-import RQSuperHeros from './components/RQSuperHeros.page';
+import RQSuperHeroes from './components/RQSuperHeroes.page';
 import SuperHeros from './components/SuperHeros.page';
+import RQSuperHero from './components/RQSuperHero.page';
 import { QueryClientProvider, QueryClient } from 'react-query';
-import { ReactQueryDevtools, ReactQueryDevTools } from 'react-query/devtools';
+import { ReactQueryDevtools } from 'react-query/devtools';
 import {
   BrowserRouter as Router,
   Routes,
@@ -36,7 +37,8 @@ function App() {
           <Routes>
             <Route path="/" element={<HomePage />} />
             <Route path="super-heroes" element={<SuperHeros />} />
-            <Route path="rq-super-heroes" element={<RQSuperHeros />} />
+            <Route path="rq-super-heroes" element={<RQSuperHeroes />} />
+            <Route path="rq-super-heroes/:heroId" element={<RQSuperHero />} />
           </Routes>
         </>
       </Router>
