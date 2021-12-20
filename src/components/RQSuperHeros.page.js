@@ -1,7 +1,5 @@
 import React from 'react'
-import { useQuery } from 'react-query';
-import axios from 'axios';
-
+import { useSuperHeroesData } from '../hooks/useSuperHeroesData';
 export default function RQSuperHerosPage() {
 
   const onSuccess = (data) => {
@@ -12,16 +10,7 @@ export default function RQSuperHerosPage() {
     console.log('Perform side effect after encountering error', error);
   }
 
-  const result = useQuery('super-heroes', () => {
-    return axios.get('http://localhost:3004/superheroes')
-  }, {
-    onSuccess: onSuccess,
-    onError: onError,
-    select: (data) => {  // 对返回的数据进行格式化
-      const superHeroNames = data.data.map(hero => hero.name)
-      return superHeroNames
-    }
-  });
+  const result = useSuperHeroesData(onSuccess, onError);
   
   const { isLoading, isError, data, error, isFetching } = result;
   console.log({isLoading, isFetching});
