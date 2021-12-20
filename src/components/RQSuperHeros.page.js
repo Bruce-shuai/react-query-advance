@@ -11,8 +11,8 @@ export default function RQSuperHerosPage() {
   const result = useQuery('super-heroes', () => {
     return axios.get('http://localhost:3004/superheroes')
   }, {
-    // 使用缓存的另一个好处是减少网络请求。这需要配置(作为开发者，我们知道某个api数据一般更新频率，所以我们可以控制发送网络请求更新数据的频率)
-    staleTime: 30000,    // 设置数据有效时间为30s(30s之内，重复进入这个路由页面，不会去发送网络请求)  默认的staleTime 为0s
+    refetchOnMount: true,  // 默认值为true,表示只要数据过期(staleTime到了)，重新进入这个路由页面的时候就可以进行refetch(重新进行网络请求)。false，则结果相反。'always' 则表示无视staleTime,只要进入该路由页面则可以进行refetch
+    refetchOnWindowFocus: true  // 默认值为true, 点击页面 更新的数据就会重新发送请求(达到自动更新数据的效果) --> 同样是3个对应值： true、false、'always'
   });
   
   const { isLoading, isError, data, error, isFetching } = result;
