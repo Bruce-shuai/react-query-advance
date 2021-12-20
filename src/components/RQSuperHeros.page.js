@@ -11,8 +11,8 @@ export default function RQSuperHerosPage() {
   const result = useQuery('super-heroes', () => {
     return axios.get('http://localhost:3004/superheroes')
   }, {
-    refetchOnMount: true,  // 默认值为true,表示只要数据过期(staleTime到了)，重新进入这个路由页面的时候就可以进行refetch(重新进行网络请求)。false，则结果相反。'always' 则表示无视staleTime,只要进入该路由页面则可以进行refetch
-    refetchOnWindowFocus: true  // 默认值为true, 点击页面 更新的数据就会重新发送请求(达到自动更新数据的效果) --> 同样是3个对应值： true、false、'always'
+    refetchInterval: 200,   // 默认值是false，这里设置2000 表示每2s就会发送一次网络请求（更新一次数据）
+    refetchIntervalInBackground: false,  // 默认是false，结合上面的refetchInterval一起使用，表示当你离开这个窗口页面，比如浏览其他网页的时候，你设置false，则该页面的网络请求会暂停发送
   });
   
   const { isLoading, isError, data, error, isFetching } = result;
