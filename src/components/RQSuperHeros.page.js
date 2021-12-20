@@ -16,7 +16,11 @@ export default function RQSuperHerosPage() {
     return axios.get('http://localhost:3004/superheroes')
   }, {
     onSuccess: onSuccess,
-    onError: onError
+    onError: onError,
+    select: (data) => {  // 对返回的数据进行格式化
+      const superHeroNames = data.data.map(hero => hero.name)
+      return superHeroNames
+    }
   });
   
   const { isLoading, isError, data, error, isFetching } = result;
@@ -27,12 +31,18 @@ export default function RQSuperHerosPage() {
   if (isError) {
     return <h2>{error.message}</h2>
   }
+  console.log('data', data);
   return (
     <>
       <h2>RQ Super Heroes Page</h2>
-      {
+      {/* {
         data?.data.map(hero => {
           return <div key={hero.id}>{hero.name}</div>
+        })
+      } */}
+      {
+        data.map(heroName => {
+          return <div key={heroName}>{heroName}</div>
         })
       }
     </>
