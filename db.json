@@ -14,6 +14,31 @@
       "id": 3,
       "name": "Wonder Woman",
       "alterEgo": "Princess Diana"
+    },
+    {
+      "name": "the Flash",
+      "alterEgo": "Barr",
+      "id": 4
+    },
+    {
+      "name": "the Flash",
+      "alterEgo": "Barr",
+      "id": 5
+    },
+    {
+      "name": "aa",
+      "alterEgo": "sss",
+      "id": 6
+    },
+    {
+      "name": "aaa",
+      "alterEgo": "sss",
+      "id": 7
+    },
+    {
+      "name": "aaaa",
+      "alterEgo": "sss",
+      "id": 8
     }
   ],
   "friends": [
@@ -39,7 +64,11 @@
   "usernames": [
     {
       "id": "帅得乱七八糟",
-      "hobbies": ["喜欢美女", "听轻音乐", "写代码"]
+      "hobbies": [
+        "喜欢美女",
+        "听轻音乐",
+        "写代码"
+      ]
     }
   ],
   "colors": [
