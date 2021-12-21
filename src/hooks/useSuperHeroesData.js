@@ -21,9 +21,13 @@ export const useAddSuperHeroData = () => {
   return useMutation((hero) => {
     return axios.post('http://localhost:3004/superheroes', hero)
   }, {
-    onSuccess: () => {  // 当mutation 成功后的操作
-      // 这里实现了，post请求发送更新了后端的数据，然后前端界面自动重新发送get请求获取变化后的数据
-      queryClient.invalidateQueries('super-heroes')  // 因为这里使原来的super-heroes里的数据无效了，所以react-query会自动重新发新的super-heroes数据请求
+    onSuccess: (data) => {  // 当mutation 成功后的操作
+      queryClient.setQueryData('super-heroes', (oldQueryData) => {
+        return {
+          ...oldQueryData,
+          data: [...oldQueryData.data, data.data]
+        }
+      })
     }
   })
 }
