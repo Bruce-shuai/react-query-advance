@@ -1,7 +1,16 @@
 // 自定义这个hooks，(相当于封装了一个特定的useQuery)可以在各个组件中使用，非常方便全局控制
 
 import { useQuery, useMutation, useQueryClient } from 'react-query';
-import axios from 'axios';
+// import axios from 'axios';
+import { request } from '../utils/axios-utils';
+
+const fetchSuperHero = () => {
+  return request({url: './superheroes'})
+}
+
+
+
+
 
 export const useSuperHeroesData = (onSuccess, onError) => {
   return useQuery('super-heroes', () => {
